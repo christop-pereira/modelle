@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Upload, Send } from "lucide-react"
+import { Upload, Send, X } from "lucide-react"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -16,6 +16,8 @@ export function ContactSection() {
     message: "",
     photo: null as File | null,
   })
+
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null)
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null
@@ -41,7 +43,7 @@ export function ContactSection() {
       const result = await res.json()
 
       if (result.success) {
-        alert("✅ Message envoyé avec succès !")
+        setToast({ message: "Message envoyé avec succès !", type: "success" })
         // Reset du formulaire
         setFormData({
           name: "",
@@ -51,16 +53,16 @@ export function ContactSection() {
           photo: null,
         })
       } else {
-        alert(`❌ Erreur : ${result.error || "Impossible d'envoyer le message"}`)
+        setToast({ message: `Erreur : ${result.error || "Impossible d'envoyer le message"}`, type: "error" })
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      alert("❌ Une erreur est survenue, veuillez réessayer.")
+      setToast({ message: "Une erreur est survenue, veuillez réessayer.", type: "error" })
     }
   }
 
   return (
-    <section id="contact" className="py-12 md:py-20 bg-muted/30">
+    <section id="contact" className="py-12 md:py-20 bg-muted/30 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">Contactez-Nous</h2>
@@ -158,6 +160,19 @@ export function ContactSection() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Pop-up toast */}
+      {toast && (
+        <div
+          className={`fixed bottom-8 right-8 z-50 max-w-xs w-full p-4 rounded shadow-lg text-white flex justify-between items-center
+            ${toast.type === "success" ? "bg-green-500" : "bg-red-500"}`}
+        >
+          <span>{toast.message}</span>
+          <button onClick={() => setToast(null)}>
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+      )}
     </section>
   )
 }
