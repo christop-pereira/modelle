@@ -10,7 +10,7 @@ export function HeroSection() {
           <img
             src="/images/logo-modelle.png"
             alt="Mod'Elle"
-            className="h-16 sm:h-20 md:h-24 w-auto mx-auto mb-4 md:mt-8 px-10 sm:px-0"
+            className="h-14 sm:h-16 md:h-20 w-auto mx-auto mb-8 md:mt-8 px-10 sm:px-0"
           />
           <img
             src="/images/femme-modelle.png"
