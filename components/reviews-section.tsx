@@ -30,7 +30,10 @@ export function ReviewsSection() {
     reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length;
 
   return (
-    <section id="avis" className="py-16 md:py-24 bg-background from-gray-50 to-gray-100">
+    <section
+      id="avis"
+      className="py-16 md:py-24 bg-background from-gray-50 to-gray-100"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Titre et moyenne */}
         <div className="text-center mb-12 md:mb-20">
@@ -62,9 +65,9 @@ export function ReviewsSection() {
           {reviews.map((review, index) => (
             <Card
               key={index}
-              className="bg-card hover:shadow-xl transition-transform transform hover:-translate-y-1 duration-300"
+              className="bg-card hover:shadow-xl transition-transform transform hover:-translate-y-2 duration-300 scale-[1.03]"
             >
-              <CardContent className="p-8 flex flex-col h-full justify-between">
+              <CardContent className="p-10 flex flex-col h-full justify-between">
                 {/* Étoiles */}
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
@@ -84,10 +87,21 @@ export function ReviewsSection() {
                   "{review.comment}"
                 </p>
 
-                {/* Avatar anonyme */}
+                {/* Avatar */}
                 <div className="flex items-center gap-3 mt-6">
-                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray font-semibold">
-                    C
+                  <div className="relative w-10 h-10 overflow-hidden bg-neutral-secondary-medium rounded-full flex-shrink-0">
+                    <svg
+                      className="absolute w-12 h-12 text-body-subtle -left-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
                   </div>
                   <span className="text-sm font-medium text-gray-600">
                     Cliente Mod'Elle
