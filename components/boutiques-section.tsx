@@ -10,6 +10,8 @@ const boutiques = [
     hours: ["Lundi: Fermé", "Mar-Sam: 9h00-12h00 / 14h00-19h00", "Dimanche: Fermé"],
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2762.894!2d6.120437!3d46.172767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c7b6993686913%3A0x9cd8e14768293635!2sBoutique%20Mod%27Elle!5e0!3m2!1sfr!2sch!4v1700000000000!5m2!1sfr!2sch",
+    gglMps:
+      "https://www.google.com/maps/place/Boutique+Mod'Elle/@46.1727667,6.1204374,17z/data=!3m1!4b1!4m6!3m5!1s0x478c7b6993686913:0x9cd8e14768293635!8m2!3d46.1727667!4d6.1230123!16s%2Fg%2F11ghpt4h69?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
   },
   {
     name: "Boutique Centre commercial de Budé",
@@ -18,6 +20,8 @@ const boutiques = [
     hours: ["Lundi: Fermé", "Mar-Ven: 10h00-18h30", "Samedi: 10h00-17h00", "Dimanche: Fermé"],
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2760.27!2d6.128769!3d46.224973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c64ee546ffa59%3A0x1d34c7239049a950!2sAv.%20De-Bud%C3%A9%2015%2C%201202%20Gen%C3%A8ve!5e0!3m2!1sfr!2sch!4v1700000000000!5m2!1sfr!2sch",
+    gglMps:
+      "https://www.google.com/maps/place/Av.+De-Bud%C3%A9+15,+1202+Gen%C3%A8ve/@46.2249728,6.1287687,17z/data=!3m1!4b1!4m6!3m5!1s0x478c64ee546ffa59:0x1d34c7239049a950!8m2!3d46.2249728!4d6.1313436!16s%2Fg%2F11c5b4cxdn?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
   },
 ]
 
@@ -82,7 +86,7 @@ export function BoutiquesSection() {
                   </Button>
                   <Button size="sm" variant="outline" asChild>
                     <a
-                      href={`https://maps.google.com/?q=${encodeURIComponent(boutique.address)}`}
+                      href={boutique.gglMps}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
