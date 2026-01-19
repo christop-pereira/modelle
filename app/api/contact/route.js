@@ -56,12 +56,12 @@ export async function POST(request) {
       replyTo: email,
       subject: `📩 Nouveau message de ${name}`,
       text: `
-Nom : ${name}
-Email : ${email}
-Téléphone : ${phone || "Non renseigné"}
+        Nom : ${name}
+        Email : ${email}
+        Téléphone : ${phone || "Non renseigné"}
 
-Message :
-${message}
+        Message :
+        ${message}
       `,
       attachments,
     })

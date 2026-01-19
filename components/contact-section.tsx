@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -19,15 +17,46 @@ export function ContactSection() {
     photo: null as File | null,
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
-  }
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null
     setFormData((prev) => ({ ...prev, photo: file }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    try {
+      const data = new FormData()
+      data.append("name", formData.name)
+      data.append("email", formData.email)
+      data.append("phone", formData.phone)
+      data.append("message", formData.message)
+      if (formData.photo) data.append("photo", formData.photo)
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: data,
+      })
+
+      const result = await res.json()
+
+      if (result.success) {
+        alert("✅ Message envoyé avec succès !")
+        // Reset du formulaire
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          photo: null,
+        })
+      } else {
+        alert(`❌ Erreur : ${result.error || "Impossible d'envoyer le message"}`)
+      }
+    } catch (error) {
+      console.error(error)
+      alert("❌ Une erreur est survenue, veuillez réessayer.")
+    }
   }
 
   return (
@@ -96,7 +125,13 @@ export function ContactSection() {
               <div className="space-y-2">
                 <Label htmlFor="photo">Photo (optionnelle)</Label>
                 <div className="flex items-center gap-4">
-                  <Input id="photo" type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
+                  <Input
+                    id="photo"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
                   <Button
                     type="button"
                     variant="outline"
@@ -106,7 +141,9 @@ export function ContactSection() {
                     <Upload className="h-4 w-4" />
                     {formData.photo ? formData.photo.name : "Ajouter une photo"}
                   </Button>
-                  {formData.photo && <span className="text-sm text-muted-foreground">Photo sélectionnée</span>}
+                  {formData.photo && (
+                    <span className="text-sm text-muted-foreground">Photo sélectionnée</span>
+                  )}
                 </div>
                 <p className="text-xs text-muted-foreground">
                   Pour les retouches, une photo peut nous aider à mieux comprendre votre demande
