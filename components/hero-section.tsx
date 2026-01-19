@@ -19,7 +19,7 @@ export function HeroSection() {
           />
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Votre Boutique de Prêt-à-Porter Féminin</h1>
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Votre boutique de prêt-à-porter Féminin</h1>
 
         <p className="text-xl md:text-2xl mb-8 text-balance text-muted-foreground">
           Mode féminine, retouches professionnelles et créations uniques
