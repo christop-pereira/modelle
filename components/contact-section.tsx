@@ -18,6 +18,7 @@ export function ContactSection() {
   })
 
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null
@@ -26,6 +27,7 @@ export function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true) // désactive le bouton
 
     try {
       const data = new FormData()
@@ -58,6 +60,8 @@ export function ContactSection() {
     } catch (error: any) {
       console.error(error)
       setToast({ message: "Une erreur est survenue, veuillez réessayer.", type: "error" })
+    } finally {
+      setIsSubmitting(false) // réactive le bouton après succès ou échec
     }
   }
 
@@ -152,9 +156,15 @@ export function ContactSection() {
                 </p>
               </div>
 
-              <Button type="submit" size="lg" className="w-full cursor-pointer">
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full cursor-pointer"
+                disabled={isSubmitting}
+                variant={isSubmitting ? "secondary" : "default"}
+              >
                 <Send className="h-4 w-4 mr-2" />
-                Envoyer la Demande
+                {isSubmitting ? "Envoi..." : "Envoyer la Demande"}
               </Button>
             </form>
           </CardContent>
