@@ -43,32 +43,55 @@ export function AboutSection() {
           </div>
 
           {/* Images */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <img
-                src="/elegant-fashion-atelier-interior-with-sewing-machi.png"
-                alt="Atelier de couture"
-                className="w-full h-64 object-cover rounded-xl shadow-lg"
-              />
-              <img
-                src="/professional-seamstress-working-on-dress-alteratio.png"
-                alt="Couturière au travail"
-                className="w-full h-40 object-cover rounded-xl shadow-lg"
-              />
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 sm:max-w-lg sm:mx-auto">
+
+            {/* Budé */}
+            <div className="space-y-2">
+              <h3 className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-gray-500 text-center">
+                Petit-Saconnex
+              </h3>
+
+              <div className="space-y-2">
+                <div className="aspect-[3/4] sm:translate-x-2 sm:rotate-[1deg]">
+                  <img
+                    src="/boutique-bude1.jpeg"
+                    className="w-full h-full object-cover rounded-md shadow-sm"
+                  />
+                </div>
+
+                <div className="aspect-[3/4] sm:translate-x-1 sm:rotate-[-0.5deg]">
+                  <img
+                    src="/boutique-bude2.jpeg"
+                    className="w-full h-full object-cover rounded-md shadow-sm"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="space-y-4 pt-8">
-              <img
-                src="/beautiful-fabric-selection-and-sewing-tools-in-bou.png"
-                alt="Sélection de tissus"
-                className="w-full h-40 object-cover rounded-xl shadow-lg"
-              />
-              <img
-                src="/team-of-professional-seamstresses-in-modern-atelie.png"
-                alt="Équipe Mod'Elle"
-                className="w-full h-64 object-cover rounded-xl shadow-lg"
-              />
+
+            {/* Grand-Lancy */}
+            <div className="space-y-2 sm:pt-6">
+              <h3 className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-gray-500 text-center">
+                Grand-Lancy
+              </h3>
+
+              <div className="space-y-2">
+                <div className="aspect-[3/4] sm:translate-x-[-2] sm:rotate-[-1deg]">
+                  <img
+                    src="/boutique-grandlancy1.jpeg"
+                    className="w-full h-full object-cover rounded-md shadow-sm"
+                  />
+                </div>
+
+                <div className="aspect-[3/4] sm:translate-x-[-1] sm:rotate-[0.5deg]">
+                  <img
+                    src="/boutique-grandlancy2.jpeg"
+                    className="w-full h-full object-cover rounded-md shadow-sm"
+                  />
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
