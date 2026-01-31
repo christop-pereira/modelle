@@ -7,7 +7,7 @@ const boutiques = [
     name: "Boutique Grand-Lancy",
     address: "72 Avenue des Communes-Réunies, 1212 Grand-Lancy",
     phone: "022 794 00 01",
-    hours: ["Lundi: Fermé", "Mar-Sam: 9h00-12h00 / 14h00-19h00", "Dimanche: Fermé"],
+    hours: ["Lundi: Fermé", "Mar-Ven: 9h00-12h00 / 14h00-19h00", "Samedi: 9h00-12h30 / 13h30-18h", "Dimanche: Fermé"],
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2762.894!2d6.120437!3d46.172767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c7b6993686913%3A0x9cd8e14768293635!2sBoutique%20Mod%27Elle!5e0!3m2!1sfr!2sch!4v1700000000000!5m2!1sfr!2sch",
     gglMps:
